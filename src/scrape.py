@@ -25,6 +25,8 @@ regions = {
     "ch": "china",
 }
 
+agents = ["astra", "breach", "brimstone", "chamber", "cypher", "jett", "kayo", "killjoy", "neon", "omen", "phoenix",
+              "raze", "reyna", "sage", "skye", "sova", "viper", "yoru"]
 
 class Vlr:
     def __init__(self):
@@ -34,7 +36,6 @@ class Vlr:
 
     def get_soup(self, url):
         response = requests.get(url, headers=self.headers)
-
         html, status_code = response.text, response.status_code
         return BeautifulSoup(html, "lxml"), status_code
 
@@ -108,7 +109,6 @@ class Vlr:
             )
 
         df = pd.DataFrame(result)
-        df.to_csv()
         filepath = Path('stats.csv')
         df.to_csv(filepath, index=False)
 
